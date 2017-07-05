@@ -12,6 +12,9 @@ namespace Marcelo.Leiloes.Repository.Models
         public string Cod { get; set; }
         public string Valor { get; set; }
         public string Cidade { get; set; }
+        public string Bairro { get; set; }
+        public string Numero { get; set; }
+        public string Complemento { get; set; }
         public string UF { get; set; }
         public string DtInicio { get; set; }
         public string Endereco { get; set; }
@@ -45,6 +48,21 @@ namespace Marcelo.Leiloes.Repository.Models
                 Endereco = data[7],
                 CEP = data[8]
             };
+        }
+
+        public void Clear()
+        {
+            Cod = Util.Clean(Cod);
+            Valor = Util.Clean(Valor);
+            Cidade = Util.Clean(Cidade);
+            UF = Util.Clean(UF);
+            DtInicio = Util.Clean(DtInicio);
+            Endereco = Util.Clean(Endereco);
+            Url = Util.Clean(Url);
+            Tipo = Util.Clean(Tipo);
+            CEP = Util.Clean(CEP);
+            Entidade = Util.Clean(Entidade);
+            Site = Util.Clean(Site);
         }
     }
 }

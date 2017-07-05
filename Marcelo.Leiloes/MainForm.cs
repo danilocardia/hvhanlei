@@ -19,8 +19,8 @@ namespace Marcelo.Leiloes
 
         private void buscarNovosLeilõesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SearchForm searchForm = new Leiloes.SearchForm();
-            searchForm.ShowDialog();
+            SiteSelectionForm selection = new Leiloes.SiteSelectionForm();
+            selection.ShowDialog();
         }
 
         private void importarDoArquivoToolStripMenuItem_Click(object sender, EventArgs e)

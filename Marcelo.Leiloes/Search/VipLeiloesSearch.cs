@@ -1,4 +1,5 @@
-﻿using Marcelo.Leiloes.Repository.Models;
+﻿using Marcelo.Leiloes.Repository;
+using Marcelo.Leiloes.Repository.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -82,7 +83,16 @@ namespace Marcelo.Leiloes.Search
 
             info.Endereco = root.Find("#ContentPlaceHolder1_lblEndereco").FirstOrDefault()?.InnerText;
 
+            var compl = root.Find("#ContentPlaceHolder1_lblDescricaoImovel").FirstOrDefault()?.InnerText;
+            if (!String.IsNullOrEmpty(compl))
+                info.Endereco += " COMPLEMENTO: " + compl;
+
             info.Entidade = url.Contains("BRA") ? "Bradesco" : (url.Contains("ITA") ? "Itaú" : (url.Contains("PAN") ? "Pan" : "Vivarella"));
+
+            var searchUF = Util.Clean(root.Find("#ContentPlaceHolder1_lblEstado").FirstOrDefault()?.InnerText.ToUpper());
+            var foundUF = CEPRepository.UFTranslate.Where(uf => uf.Key.ToUpper() == searchUF).Select(k => k.Value).FirstOrDefault();
+            if (!String.IsNullOrEmpty(foundUF))
+                info.UF = foundUF;
 
             //GetFromCEP(info);
 

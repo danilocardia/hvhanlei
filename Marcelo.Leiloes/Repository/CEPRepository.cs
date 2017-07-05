@@ -117,16 +117,18 @@ namespace Marcelo.Leiloes.Repository
             if (ceps.Count() == 0)
                 return "";
 
-            var filteredByToken = ceps.Select(c => new {
+            var filteredByToken = ceps.Select(c => new
+            {
                 CEP = c,
                 Correspondencias = CalculaCorrespondencias(c, addressClean + cityClean)
             }).OrderBy(c => c.Correspondencias);
 
             var cep = filteredByToken.Where(c => c.Correspondencias >= 0.35f).Select(c => c.CEP).LastOrDefault();
 
-            if(cep == null)
+            if (cep == null)
             {
-                filteredByToken = ceps.Select(c => new {
+                filteredByToken = ceps.Select(c => new
+                {
                     CEP = c,
                     Correspondencias = CalculaCorrespondencias(c, Similarity.Similarity.GetSimilarFrom(addressClean) + cityClean)
                 }).OrderBy(c => c.Correspondencias);
@@ -165,5 +167,47 @@ namespace Marcelo.Leiloes.Repository
 
             return ret;
         }
+
+        public static Dictionary<string, string> UFTranslate = new Dictionary<string, string>()
+        {
+            { "Acre", "AC" },
+            { "Alagoas", "AL" },
+            { "Amapá", "AP" },
+            { "Amapa", "AP" },
+            { "Amazonas", "AM" },
+            { "Bahia", "BA" },
+            { "Ceará", "CE" },
+            { "Ceara", "CE" },
+            { "Distrito Federal", "DF" },
+            { "Espírito Santo", "ES" },
+            { "Espirito Santo", "ES" },
+            { "Goiás", "GO" },
+            { "Goias", "GO" },
+            { "Maranhão", "MA" },
+            { "Maranhao", "MA" },
+            { "Mato Grosso", "MT" },
+            { "Mato Grosso do Sul", "MS" },
+            { "Minas Gerais", "MG" },
+            { "Pará", "PA" },
+            { "Para", "PA" },
+            { "Paraíba", "PB" },
+            { "Paraiba", "PB" },
+            { "Paraná", "PR" },
+            { "Parana", "PR" },
+            { "Pernambuco", "PE" },
+            { "Piauí", "PI" },
+            { "Piaui", "PI" },
+            { "Rio de Janeiro", "RJ" },
+            { "Rio Grande do Norte", "RN" },
+            { "Rio Grande do Sul", "RS" },
+            { "Rondônia", "RO" },
+            { "Rondonia", "RO" },
+            { "Roraima", "RR" },
+            { "Santa Catarina", "SC" },
+            { "São Paulo", "SP" },
+            { "Sao Paulo", "SP" },
+            { "Sergipe", "SE" },
+            { "Tocantins", "TO" }
+        };
     }
 }

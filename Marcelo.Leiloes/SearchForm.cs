@@ -15,6 +15,7 @@ namespace Marcelo.Leiloes
 {
     public partial class SearchForm : Form
     {
+        public List<AbstractSearch> searchList = new List<Search.AbstractSearch>();
         BackgroundWorker bg = new BackgroundWorker();
 
         public SearchForm()
@@ -28,12 +29,6 @@ namespace Marcelo.Leiloes
         private void Bg_DoWork(object sender, DoWorkEventArgs e)
         {
             statusLabel.Text = "Iniciando buscas...";
-
-            List<AbstractSearch> searchList = new List<Search.AbstractSearch>();
-
-            searchList.Add(new VipLeiloesSearch());
-            searchList.Add(new MegaLeiloesSearch());
-            searchList.Add(new MilanLeiloesSearch());
             
             ItemRepository.GetInstance().Clear();
 
@@ -72,6 +67,7 @@ namespace Marcelo.Leiloes
                 statusLabel.Text = String.Format("Processados {0} itens de {1} - {2}", ++processedItems, item.Site, DateTime.Now.ToString("HH:mm:ss"));
             }));
 
+            item.Clear();
             ItemRepository.GetInstance().Add(item);
         }
     }

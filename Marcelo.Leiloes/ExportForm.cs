@@ -47,7 +47,7 @@ namespace Marcelo.Leiloes
         {
             this.Invoke(new MethodInvoker(delegate
             {
-                StringBuilder sb = new StringBuilder("SITE;LINK EDITAL;DATA LEILÃO;ENTIDADE;VALOR;UF;MUNICIPIO;ENDEREÇO;CEP;FALHA\n");
+                StringBuilder sb = new StringBuilder("SITE;LINK EDITAL/LOTE;DATA LEILÃO;ENTIDADE;VALOR;UF;MUNICIPIO;BAIRRO;ENDEREÇO;NUM;COMPLEMENTO;CEP;FALHA\n");
 
                 progressProgressBar.Maximum = ItemRepository.GetInstance().Count;
                 progressProgressBar.Minimum = 0;
@@ -55,17 +55,17 @@ namespace Marcelo.Leiloes
 
                 foreach (var info in ItemRepository.GetInstance())
                 {
-                    sb.AppendLine(String.Format("{0};{1};{2};{3};{4};{5};{6};{7};{8};{9};",
-                        info.Site,
-                        info.Url,
-                        Util.Clean(info.DtInicio),
-                        Util.Clean(info.Entidade),
-                        Util.Clean(info.Valor),
-                        Util.Clean(info.UF),
-                        Util.Clean(info.Cidade),
-                        Util.Clean(info.Endereco),
-                        String.IsNullOrEmpty(info.CEP) ? "" : Util.Clean(info.CEP).Insert(5, "-"),
-                        info.Falha ? "FALHA" : ""));
+                    decimal valor;
+                    if(decimal.TryParse(info.Valor, out valor))
+                    {
+                        info.Valor = valor.ToString("N2");
+                    }
+                    else
+                    {
+                        info.Valor = "";
+                    }
+
+                    sb.AppendLine($@"{info.Site};{info.Url};{info.DtInicio};{info.Entidade};{(String.IsNullOrEmpty(info.Valor) ? "" : "R$" + info.Valor)};{info.UF};{info.Cidade};{info.Bairro};{info.Endereco};{info.Numero};{info.Complemento};{(String.IsNullOrEmpty(info.CEP) ? "" : Util.Clean(info.CEP).Insert(5, " - "))};{(info.Falha ? "FALHA" : "")};");
 
                     progressProgressBar.Value++;
                 }

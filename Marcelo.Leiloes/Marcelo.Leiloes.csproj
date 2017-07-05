@@ -107,6 +107,12 @@
     <Compile Include="Search\MilanLeiloesSearch.cs" />
     <Compile Include="Search\VipLeiloesSearch.cs" />
     <Compile Include="Similarity\Similarity.cs" />
+    <Compile Include="SiteSelectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SiteSelectionForm.Designer.cs">
+      <DependentUpon>SiteSelectionForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CEPAdjustForm.resx">
       <DependentUpon>CEPAdjustForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,6 +144,9 @@
     <Content Include="cep_br.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="SiteSelectionForm.resx">
+      <DependentUpon>SiteSelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
