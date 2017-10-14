@@ -56,7 +56,7 @@ namespace Marcelo.Leiloes.Search
 
                 try
                 {
-                    var item = GetItem(destUrl);
+                    var item = GetItem(destUrl, cidadeUf: l.Cq().Find(".descricaoLeilao").ElementAt(0)?.InnerText);
 
                     if (item != null)
                     {
@@ -72,7 +72,7 @@ namespace Marcelo.Leiloes.Search
             }
         }
 
-        ItemModel GetItem(string url, string tipo = "")
+        ItemModel GetItem(string url, string tipo = "", string cidadeUf = "")
         {
             ItemModel info = new ItemModel();
 
@@ -87,32 +87,11 @@ namespace Marcelo.Leiloes.Search
 
             info.DtInicio = destaque.ElementAt(1).InnerText;
 
-            var endereco = "";
-            foreach (var el in root.Find(".loteDescricao").ElementAt(0).ChildElements)
-            {
-                if (el.HasClass("tituloAzul"))
-                    continue;
+            var cduf = cidadeUf.Split('-');
 
-                if (el.ChildElements.Count() > 0)
-                {
-                    foreach (var child in el.ChildElements)
-                        endereco += child.InnerText + "\n";
-                }
-                else
-                {
-                    endereco += el.InnerText + "\n";
-                }
-            }
-
-            if (endereco.Split('-').Length < 2)
-            {
-                return null;
-            }
-
-            info.UF = endereco.Split('-')[1].Replace(" ", "").Substring(0, 2);
-            info.Cidade = endereco.Split('-')[0].Replace("IM&#211;VEL:", "").Replace("\n", "").Replace(" ", "");
-
-            info.Endereco = endereco;
+            info.UF = cduf[1].Replace(" ", "").Substring(0, 2);
+            info.Cidade = cduf[0].TrimStart(' ', '\t', '\n', '\r');
+            
             info.Falha = true;
 
             info.Entidade = GetSponsorFrom(url);
@@ -120,7 +99,7 @@ namespace Marcelo.Leiloes.Search
             info.Tipo = tipo;
             info.Url = url;
             info.Site = "MILANLEILOES";
-            info.RawHTML = root.ToString();
+            info.InformacoesAdicionais = Util.StripHTML(root.Find(".loteDescricao").ElementAt(0).InnerHTML);
 
             return info;
         }

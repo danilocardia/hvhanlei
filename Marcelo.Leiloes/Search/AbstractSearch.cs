@@ -11,7 +11,7 @@ namespace Marcelo.Leiloes.Search
     public abstract class AbstractSearch
     {
         protected SearchDataBag Config = new SearchDataBag();
-        protected WebClient wc = new WebClient();
+        protected WebClient wc = new WebClient() { Encoding = System.Text.Encoding.GetEncoding("iso-8859-1") };
 
         public delegate void ItemFinished(ItemModel item);
         public event ItemFinished OnItemFinished;

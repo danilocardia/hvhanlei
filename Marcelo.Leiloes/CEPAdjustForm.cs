@@ -48,7 +48,7 @@ namespace Marcelo.Leiloes
                 {
                     this.Invoke(new MethodInvoker(delegate
                     {
-                        info.CEP = CEPRepository.GetBy(info.Endereco + info.Cidade, info.Cidade);
+                        info.CEP = CEPRepository.GetBy(info.Endereco + " " + info.Bairro + " " + info.Cidade, info.Cidade);
                         progressProgressBar.Value++;
                     }));
                 }

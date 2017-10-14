@@ -85,7 +85,7 @@ namespace Marcelo.Leiloes.Search
 
             var compl = root.Find("#ContentPlaceHolder1_lblDescricaoImovel").FirstOrDefault()?.InnerText;
             if (!String.IsNullOrEmpty(compl))
-                info.Endereco += " COMPLEMENTO: " + compl;
+                info.InformacoesAdicionais += compl;
 
             info.Entidade = url.Contains("BRA") ? "Bradesco" : (url.Contains("ITA") ? "Itaú" : (url.Contains("PAN") ? "Pan" : "Vivarella"));
 

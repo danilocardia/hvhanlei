@@ -83,14 +83,13 @@ namespace Marcelo.Leiloes.Search
 
             info.Endereco = root.Find("[width=\"20%\"]").Next("td").ElementAt(0).InnerText;
 
-            info.Entidade = root.Find(".table-nomargin tr td").ElementAt(1).InnerText;
+            info.InformacoesAdicionais = root.Find("#batch-description").ElementAt(0).InnerText;
 
-            //info.CEP = CEPRepository.GetBy(info.Endereco);
+            info.Entidade = root.Find(".table-nomargin tr td").ElementAt(1).InnerText;
 
             info.Tipo = tipo;
             info.Url = url;
             info.Site = "MEGALEILOES";
-            info.RawHTML = root.ToString();
 
             return info;
         }

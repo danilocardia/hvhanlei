@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
@@ -22,8 +23,7 @@ namespace Marcelo.Leiloes
     }
 
     public class Util
-    {
-
+    { 
         static Dictionary<string, string> replaces = null;
         public static string Clean(string p)
         {
@@ -216,6 +216,10 @@ namespace Marcelo.Leiloes
             }
 
             return p;
+        }
+        public static string StripHTML(string input)
+        {
+            return Regex.Replace(input, "<.*?>", String.Empty);
         }
     }
 

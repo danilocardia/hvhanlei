@@ -47,7 +47,7 @@ namespace Marcelo.Leiloes
         {
             this.Invoke(new MethodInvoker(delegate
             {
-                StringBuilder sb = new StringBuilder("SITE;LINK EDITAL/LOTE;DATA LEILÃO;ENTIDADE;VALOR;UF;MUNICIPIO;BAIRRO;ENDEREÇO;NUM;COMPLEMENTO;CEP;FALHA\n");
+                StringBuilder sb = new StringBuilder("SITE;LINK EDITAL/LOTE;DATA LEILÃO;LOTE;ENTIDADE;VALOR;UF;MUNICIPIO;BAIRRO;ENDEREÇO;NUM;COMPLEMENTO;CEP;COMPLETA\n");
 
                 progressProgressBar.Maximum = ItemRepository.GetInstance().Count;
                 progressProgressBar.Minimum = 0;
@@ -56,7 +56,7 @@ namespace Marcelo.Leiloes
                 foreach (var info in ItemRepository.GetInstance())
                 {
                     decimal valor;
-                    if(decimal.TryParse(info.Valor, out valor))
+                    if(decimal.TryParse(info.Valor.Replace("R$", "").Replace(" ", "").Replace(".", ""), out valor))
                     {
                         info.Valor = valor.ToString("N2");
                     }
@@ -65,7 +65,7 @@ namespace Marcelo.Leiloes
                         info.Valor = "";
                     }
 
-                    sb.AppendLine($@"{info.Site};{info.Url};{info.DtInicio};{info.Entidade};{(String.IsNullOrEmpty(info.Valor) ? "" : "R$" + info.Valor)};{info.UF};{info.Cidade};{info.Bairro};{info.Endereco};{info.Numero};{info.Complemento};{(String.IsNullOrEmpty(info.CEP) ? "" : Util.Clean(info.CEP).Insert(5, " - "))};{(info.Falha ? "FALHA" : "")};");
+                    sb.AppendLine($@"{info.Site};{info.Url};{info.DtInicio};;{info.Entidade};{(String.IsNullOrEmpty(info.Valor) ? "" : "R$" + info.Valor)};{info.UF};{info.Cidade};{info.Bairro};{info.Endereco};{info.Numero};{info.Complemento};{(String.IsNullOrEmpty(info.CEP) ? "" : Util.Clean(info.CEP).Insert(5, " - "))};{info.InformacoesAdicionais};");
 
                     progressProgressBar.Value++;
                 }

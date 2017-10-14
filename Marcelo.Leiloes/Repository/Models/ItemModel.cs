@@ -23,7 +23,7 @@ namespace Marcelo.Leiloes.Repository.Models
         public string CEP { get; set; }
         public string Entidade { get; set; }
         public string Site { get; set; }
-        public string RawHTML { get; set; }
+        public string InformacoesAdicionais { get; set; }
         public bool Falha { get; set; }
 
         public static ItemModel FromString(string from)
@@ -63,6 +63,7 @@ namespace Marcelo.Leiloes.Repository.Models
             CEP = Util.Clean(CEP);
             Entidade = Util.Clean(Entidade);
             Site = Util.Clean(Site);
+            InformacoesAdicionais = Util.Clean(InformacoesAdicionais);
         }
     }
 }
