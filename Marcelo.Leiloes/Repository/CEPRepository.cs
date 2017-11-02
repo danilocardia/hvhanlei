@@ -109,8 +109,8 @@ namespace Marcelo.Leiloes.Repository
             if (String.IsNullOrEmpty(address))
                 return "";
 
-            var addressClean = RemoverAcentos(Util.Clean(address));
-            var cityClean = RemoverAcentos(Util.Clean(city));
+            var addressClean = RemoverAcentos(Util.Clear(address));
+            var cityClean = RemoverAcentos(Util.Clear(city));
 
             var ceps = Repository.Where(c => addressClean.Contains(c.LogradouroSemAcentos) && addressClean.Contains(c.CidadeSemAcentos)).ToList();
 

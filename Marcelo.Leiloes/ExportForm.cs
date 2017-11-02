@@ -65,7 +65,7 @@ namespace Marcelo.Leiloes
                         info.Valor = "";
                     }
 
-                    sb.AppendLine($@"{info.Site};{info.Url};{info.DtInicio};;{info.Entidade};{(String.IsNullOrEmpty(info.Valor) ? "" : "R$" + info.Valor)};{info.UF};{info.Cidade};{info.Bairro};{info.Endereco};{info.Numero};{info.Complemento};{(String.IsNullOrEmpty(info.CEP) ? "" : Util.Clean(info.CEP).Insert(5, " - "))};{info.InformacoesAdicionais};");
+                    sb.AppendLine($@"{info.Site};{info.Url};{info.DtInicio};{info.Cod};{info.Entidade};{(String.IsNullOrEmpty(info.Valor) ? "" : "R$" + info.Valor)};{info.UF};{info.Cidade};{info.Bairro};{info.Endereco};{info.Numero};{info.Complemento};{(String.IsNullOrEmpty(info.CEP) ? "" : Util.Clear(info.CEP).Insert(5, " - "))};{info.InformacoesAdicionais};");
 
                     progressProgressBar.Value++;
                 }

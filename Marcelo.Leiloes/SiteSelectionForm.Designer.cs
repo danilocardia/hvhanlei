@@ -33,6 +33,14 @@
             this.chkMilan = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkCaixaSP = new System.Windows.Forms.CheckBox();
+            this.chkCaixaRJMGES = new System.Windows.Forms.CheckBox();
+            this.chkCaixaSul = new System.Windows.Forms.CheckBox();
+            this.chkCaixaNordeste = new System.Windows.Forms.CheckBox();
+            this.chkCaixaCentroOeste = new System.Windows.Forms.CheckBox();
+            this.chkCaixaNorte = new System.Windows.Forms.CheckBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // chkMegaLeiloes
@@ -76,7 +84,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(117, 106);
+            this.button1.Location = new System.Drawing.Point(186, 225);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 23);
             this.button1.TabIndex = 4;
@@ -84,11 +92,87 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.chkCaixaNorte);
+            this.groupBox1.Controls.Add(this.chkCaixaCentroOeste);
+            this.groupBox1.Controls.Add(this.chkCaixaNordeste);
+            this.groupBox1.Controls.Add(this.chkCaixaSul);
+            this.groupBox1.Controls.Add(this.chkCaixaRJMGES);
+            this.groupBox1.Controls.Add(this.chkCaixaSP);
+            this.groupBox1.Location = new System.Drawing.Point(13, 102);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(282, 117);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Caixa Econômica Federal";
+            // 
+            // chkCaixaSP
+            // 
+            this.chkCaixaSP.AutoSize = true;
+            this.chkCaixaSP.Location = new System.Drawing.Point(15, 19);
+            this.chkCaixaSP.Name = "chkCaixaSP";
+            this.chkCaixaSP.Size = new System.Drawing.Size(40, 17);
+            this.chkCaixaSP.TabIndex = 6;
+            this.chkCaixaSP.Text = "SP";
+            this.chkCaixaSP.UseVisualStyleBackColor = true;
+            // 
+            // chkCaixaRJMGES
+            // 
+            this.chkCaixaRJMGES.AutoSize = true;
+            this.chkCaixaRJMGES.Location = new System.Drawing.Point(15, 42);
+            this.chkCaixaRJMGES.Name = "chkCaixaRJMGES";
+            this.chkCaixaRJMGES.Size = new System.Drawing.Size(94, 17);
+            this.chkCaixaRJMGES.TabIndex = 7;
+            this.chkCaixaRJMGES.Text = "RJ + MG + ES";
+            this.chkCaixaRJMGES.UseVisualStyleBackColor = true;
+            // 
+            // chkCaixaSul
+            // 
+            this.chkCaixaSul.AutoSize = true;
+            this.chkCaixaSul.Location = new System.Drawing.Point(146, 87);
+            this.chkCaixaSul.Name = "chkCaixaSul";
+            this.chkCaixaSul.Size = new System.Drawing.Size(78, 17);
+            this.chkCaixaSul.TabIndex = 8;
+            this.chkCaixaSul.Text = "Região Sul";
+            this.chkCaixaSul.UseVisualStyleBackColor = true;
+            // 
+            // chkCaixaNordeste
+            // 
+            this.chkCaixaNordeste.AutoSize = true;
+            this.chkCaixaNordeste.Location = new System.Drawing.Point(146, 65);
+            this.chkCaixaNordeste.Name = "chkCaixaNordeste";
+            this.chkCaixaNordeste.Size = new System.Drawing.Size(106, 17);
+            this.chkCaixaNordeste.TabIndex = 9;
+            this.chkCaixaNordeste.Text = "Região Nordeste";
+            this.chkCaixaNordeste.UseVisualStyleBackColor = true;
+            // 
+            // chkCaixaCentroOeste
+            // 
+            this.chkCaixaCentroOeste.AutoSize = true;
+            this.chkCaixaCentroOeste.Location = new System.Drawing.Point(15, 87);
+            this.chkCaixaCentroOeste.Name = "chkCaixaCentroOeste";
+            this.chkCaixaCentroOeste.Size = new System.Drawing.Size(125, 17);
+            this.chkCaixaCentroOeste.TabIndex = 10;
+            this.chkCaixaCentroOeste.Text = "Região Centro-Oeste";
+            this.chkCaixaCentroOeste.UseVisualStyleBackColor = true;
+            // 
+            // chkCaixaNorte
+            // 
+            this.chkCaixaNorte.AutoSize = true;
+            this.chkCaixaNorte.Location = new System.Drawing.Point(15, 65);
+            this.chkCaixaNorte.Name = "chkCaixaNorte";
+            this.chkCaixaNorte.Size = new System.Drawing.Size(89, 17);
+            this.chkCaixaNorte.TabIndex = 11;
+            this.chkCaixaNorte.Text = "Região Norte";
+            this.chkCaixaNorte.UseVisualStyleBackColor = true;
+            // 
             // SiteSelectionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(231, 141);
+            this.ClientSize = new System.Drawing.Size(300, 259);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chkMilan);
@@ -100,6 +184,8 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seleção de Sites de Leilão";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -112,5 +198,12 @@
         private System.Windows.Forms.CheckBox chkMilan;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox chkCaixaNorte;
+        private System.Windows.Forms.CheckBox chkCaixaCentroOeste;
+        private System.Windows.Forms.CheckBox chkCaixaNordeste;
+        private System.Windows.Forms.CheckBox chkCaixaSul;
+        private System.Windows.Forms.CheckBox chkCaixaRJMGES;
+        private System.Windows.Forms.CheckBox chkCaixaSP;
     }
 }

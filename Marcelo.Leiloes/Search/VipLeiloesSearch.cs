@@ -89,7 +89,7 @@ namespace Marcelo.Leiloes.Search
 
             info.Entidade = url.Contains("BRA") ? "Bradesco" : (url.Contains("ITA") ? "Itaú" : (url.Contains("PAN") ? "Pan" : "Vivarella"));
 
-            var searchUF = Util.Clean(root.Find("#ContentPlaceHolder1_lblEstado").FirstOrDefault()?.InnerText.ToUpper());
+            var searchUF = Util.Clear(root.Find("#ContentPlaceHolder1_lblEstado").FirstOrDefault()?.InnerText.ToUpper());
             var foundUF = CEPRepository.UFTranslate.Where(uf => uf.Key.ToUpper() == searchUF).Select(k => k.Value).FirstOrDefault();
             if (!String.IsNullOrEmpty(foundUF))
                 info.UF = foundUF;

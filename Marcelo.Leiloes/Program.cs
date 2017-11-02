@@ -25,7 +25,7 @@ namespace Marcelo.Leiloes
     public class Util
     { 
         static Dictionary<string, string> replaces = null;
-        public static string Clean(string p)
+        public static string Clear(string p)
         {
             if (replaces == null)
             {
@@ -215,7 +215,7 @@ namespace Marcelo.Leiloes
                 p = p.Substring(0, p.Length - 1);
             }
 
-            return p;
+            return p.ToUpper();
         }
         public static string StripHTML(string input)
         {

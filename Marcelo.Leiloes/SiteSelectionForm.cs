@@ -28,8 +28,26 @@ namespace Marcelo.Leiloes
             if(chkLeiloesVIP.Checked)
                 search.searchList.Add(new VipLeiloesSearch());
 
-            if(chkMilan.Checked)
+            if (chkMilan.Checked)
                 search.searchList.Add(new MilanLeiloesSearch());
+
+            if (chkCaixaSP.Checked)
+                search.searchList.Add(new CaixaSearch(new[] { "SP" }));
+
+            if (chkCaixaSul.Checked)
+                search.searchList.Add(new CaixaSearch(new[] { "RS", "PR", "SC" }));
+
+            if (chkCaixaRJMGES.Checked)
+                search.searchList.Add(new CaixaSearch(new[] { "RJ", "MG", "ES" }));
+
+            if (chkCaixaCentroOeste.Checked)
+                search.searchList.Add(new CaixaSearch(new[] { "MT", "GO", "DF", "MS" }));
+
+            if (chkCaixaNorte.Checked)
+                search.searchList.Add(new CaixaSearch(new[] { "AC", "RO", "AM", "RR", "PA", "AP", "TO" }));
+
+            if (chkCaixaNordeste.Checked)
+                search.searchList.Add(new CaixaSearch(new[] { "MA", "PI", "CE", "RN", "PB", "PE", "AL", "SE", "BA" }));
 
             this.Close();
 

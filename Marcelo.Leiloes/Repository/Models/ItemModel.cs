@@ -33,7 +33,7 @@ namespace Marcelo.Leiloes.Repository.Models
             if (data.Length < 9)
                 return null;
 
-            if (data[4].Contains("VALOR"))
+            if (data[5].Contains("VALOR"))
                 return null; 
 
             return new ItemModel()
@@ -41,29 +41,29 @@ namespace Marcelo.Leiloes.Repository.Models
                 Site = data[0],
                 Url = data[1],
                 DtInicio = data[2],
-                Entidade = data[3],
-                Valor = data[4],
-                UF = data[5],
-                Cidade = data[6],
-                Endereco = data[7],
-                CEP = data[8]
+                Entidade = data[4],
+                Valor = data[5],
+                UF = data[6],
+                Cidade = data[7],
+                Endereco = data[8],
+                CEP = data[9]
             };
         }
 
         public void Clear()
         {
-            Cod = Util.Clean(Cod);
-            Valor = Util.Clean(Valor);
-            Cidade = Util.Clean(Cidade);
-            UF = Util.Clean(UF);
-            DtInicio = Util.Clean(DtInicio);
-            Endereco = Util.Clean(Endereco);
-            Url = Util.Clean(Url);
-            Tipo = Util.Clean(Tipo);
-            CEP = Util.Clean(CEP);
-            Entidade = Util.Clean(Entidade);
-            Site = Util.Clean(Site);
-            InformacoesAdicionais = Util.Clean(InformacoesAdicionais);
+            Cod = Util.Clear(Cod);
+            Valor = Util.Clear(Valor);
+            Cidade = Util.Clear(Cidade);
+            UF = Util.Clear(UF);
+            DtInicio = Util.Clear(DtInicio);
+            Endereco = Util.Clear(Endereco);
+            Url = Util.Clear(Url);
+            Tipo = Util.Clear(Tipo);
+            CEP = Util.Clear(CEP);
+            Entidade = Util.Clear(Entidade);
+            Site = Util.Clear(Site);
+            InformacoesAdicionais = Util.Clear(InformacoesAdicionais);
         }
     }
 }
