@@ -16,6 +16,14 @@ namespace Marcelo.Leiloes
         public SiteSelectionForm()
         {
             InitializeComponent();
+
+            this.Load += SiteSelectionForm_Load;
+        }
+
+        private void SiteSelectionForm_Load(object sender, EventArgs e)
+        {
+            dtPicker.MinDate = DateTime.Now;
+            dtPicker.Value = DateTime.Now;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -32,22 +40,22 @@ namespace Marcelo.Leiloes
                 search.searchList.Add(new MilanLeiloesSearch());
 
             if (chkCaixaSP.Checked)
-                search.searchList.Add(new CaixaSearch(new[] { "SP" }));
+                search.searchList.Add(new CaixaSearch(new[] { "SP" }, dtPicker.Value));
 
             if (chkCaixaSul.Checked)
-                search.searchList.Add(new CaixaSearch(new[] { "RS", "PR", "SC" }));
+                search.searchList.Add(new CaixaSearch(new[] { "RS", "PR", "SC" }, dtPicker.Value));
 
             if (chkCaixaRJMGES.Checked)
-                search.searchList.Add(new CaixaSearch(new[] { "RJ", "MG", "ES" }));
+                search.searchList.Add(new CaixaSearch(new[] { "RJ", "MG", "ES" }, dtPicker.Value));
 
             if (chkCaixaCentroOeste.Checked)
-                search.searchList.Add(new CaixaSearch(new[] { "MT", "GO", "DF", "MS" }));
+                search.searchList.Add(new CaixaSearch(new[] { "MT", "GO", "DF", "MS" }, dtPicker.Value));
 
             if (chkCaixaNorte.Checked)
-                search.searchList.Add(new CaixaSearch(new[] { "AC", "RO", "AM", "RR", "PA", "AP", "TO" }));
+                search.searchList.Add(new CaixaSearch(new[] { "AC", "RO", "AM", "RR", "PA", "AP", "TO" }, dtPicker.Value));
 
             if (chkCaixaNordeste.Checked)
-                search.searchList.Add(new CaixaSearch(new[] { "MA", "PI", "CE", "RN", "PB", "PE", "AL", "SE", "BA" }));
+                search.searchList.Add(new CaixaSearch(new[] { "MA", "PI", "CE", "RN", "PB", "PE", "AL", "SE", "BA" }, dtPicker.Value));
 
             this.Close();
 
