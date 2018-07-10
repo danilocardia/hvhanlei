@@ -33,11 +33,17 @@ namespace Marcelo.Leiloes
             if(chkMegaLeiloes.Checked)
                 search.searchList.Add(new MegaLeiloesSearch());
 
-            if(chkLeiloesVIP.Checked)
+            if (chkLeiloesVIP.Checked)
                 search.searchList.Add(new VipLeiloesSearch());
+
+            if (chkZuckerman.Checked)
+                search.searchList.Add(new ZuckermanSearch());
 
             if (chkMilan.Checked)
                 search.searchList.Add(new MilanLeiloesSearch());
+
+            if (chkFreitas.Checked)
+                search.searchList.Add(new FreitasSearch());
 
             if (chkCaixaSP.Checked)
                 search.searchList.Add(new CaixaSearch(new[] { "SP" }, dtPicker.Value));

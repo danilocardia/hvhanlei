@@ -5,65 +5,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Marcelo.Leiloes.Search
 {
-    public class MegaLeiloesSearch : AbstractSearch
+    public class FreitasSearch : AbstractSearch
     {
         private List<string> foundItems = new List<string>();
         private int ultimaPagina = 1;
 
-        public MegaLeiloesSearch()
+        public FreitasSearch()
         {
             Config = new Search.SearchDataBag()
             {
-                _url = "http://megaleiloes.com.br/leiloes-extrajudiciais"
+                _url = ""
             };
         }
 
         public override void Process()
         {
-            ProcessRootPageMegaLeiloes(Config._url);
+            ProcessRootPage(Config._url);
         }
 
-        void ProcessRootPageMegaLeiloes(string url)
+        void ProcessRootPage(string url)
         {
-            wc.Encoding = Encoding.UTF8;
+            int idx = 1;
 
-            CsQuery.CQ root = WebUtility.HtmlDecode(wc.DownloadString(url));
-
-            var links = root.Find(".card-header");
-
-            foreach (var l in links.Elements)
+            while (true)
             {
-                if (foundItems.Contains(l.Attributes["href"].ToUpper()))
-                {
-                    ultimaPagina = 1;
-                    return;
-                }
-
-                if (l.Attributes["href"].Contains("/ML"))
-                {
-                    ProcessRootPageMegaLeiloes(l.Attributes["href"]);
-                    continue;
-                }
-
-                try
-                {
-                    var item = GetItem(l.Attributes["href"]);
-
-                    InvokeItemFinished(item);
-
-                    foundItems.Add(item.Url.ToUpper());
-                }
-                catch
-                {
-
-                }
+                InvokeItemFinished(new Repository.Models.ItemModel() { Cod = (idx++).ToString() });
+                Thread.Sleep(new Random().Next(800, 9000));
             }
-
-            ProcessRootPageMegaLeiloes(url.Split('?')[0] + $"?pagina={++ultimaPagina}");
         }
 
         ItemModel GetItem(string url, string tipo = "")

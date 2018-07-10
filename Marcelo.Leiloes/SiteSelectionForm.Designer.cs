@@ -34,14 +34,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtPicker = new System.Windows.Forms.DateTimePicker();
             this.chkCaixaNorte = new System.Windows.Forms.CheckBox();
             this.chkCaixaCentroOeste = new System.Windows.Forms.CheckBox();
             this.chkCaixaNordeste = new System.Windows.Forms.CheckBox();
             this.chkCaixaSul = new System.Windows.Forms.CheckBox();
             this.chkCaixaRJMGES = new System.Windows.Forms.CheckBox();
             this.chkCaixaSP = new System.Windows.Forms.CheckBox();
-            this.dtPicker = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
+            this.chkZuckerman = new System.Windows.Forms.CheckBox();
+            this.chkFreitas = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,7 +88,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(186, 251);
+            this.button1.Location = new System.Drawing.Point(186, 300);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 23);
             this.button1.TabIndex = 4;
@@ -104,12 +106,29 @@
             this.groupBox1.Controls.Add(this.chkCaixaSul);
             this.groupBox1.Controls.Add(this.chkCaixaRJMGES);
             this.groupBox1.Controls.Add(this.chkCaixaSP);
-            this.groupBox1.Location = new System.Drawing.Point(13, 102);
+            this.groupBox1.Location = new System.Drawing.Point(13, 151);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(282, 143);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Caixa Econômica Federal";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 113);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(134, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Somente leilões a partir de:";
+            // 
+            // dtPicker
+            // 
+            this.dtPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtPicker.Location = new System.Drawing.Point(152, 110);
+            this.dtPicker.Name = "dtPicker";
+            this.dtPicker.Size = new System.Drawing.Size(109, 20);
+            this.dtPicker.TabIndex = 12;
             // 
             // chkCaixaNorte
             // 
@@ -171,28 +190,33 @@
             this.chkCaixaSP.Text = "SP";
             this.chkCaixaSP.UseVisualStyleBackColor = true;
             // 
-            // dtPicker
+            // chkZuckerman
             // 
-            this.dtPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtPicker.Location = new System.Drawing.Point(152, 110);
-            this.dtPicker.Name = "dtPicker";
-            this.dtPicker.Size = new System.Drawing.Size(109, 20);
-            this.dtPicker.TabIndex = 12;
+            this.chkZuckerman.AutoSize = true;
+            this.chkZuckerman.Location = new System.Drawing.Point(12, 103);
+            this.chkZuckerman.Name = "chkZuckerman";
+            this.chkZuckerman.Size = new System.Drawing.Size(116, 17);
+            this.chkZuckerman.TabIndex = 6;
+            this.chkZuckerman.Text = "Zuckerman Leilões";
+            this.chkZuckerman.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // chkFreitas
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 113);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(134, 13);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Somente leilões a partir de:";
+            this.chkFreitas.AutoSize = true;
+            this.chkFreitas.Location = new System.Drawing.Point(12, 126);
+            this.chkFreitas.Name = "chkFreitas";
+            this.chkFreitas.Size = new System.Drawing.Size(93, 17);
+            this.chkFreitas.TabIndex = 7;
+            this.chkFreitas.Text = "Freitas Leilões";
+            this.chkFreitas.UseVisualStyleBackColor = true;
             // 
             // SiteSelectionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 283);
+            this.ClientSize = new System.Drawing.Size(300, 331);
+            this.Controls.Add(this.chkFreitas);
+            this.Controls.Add(this.chkZuckerman);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
@@ -228,5 +252,7 @@
         private System.Windows.Forms.CheckBox chkCaixaSP;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtPicker;
+        private System.Windows.Forms.CheckBox chkZuckerman;
+        private System.Windows.Forms.CheckBox chkFreitas;
     }
 }

@@ -108,6 +108,8 @@
       <DependentUpon>SearchForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Search\AbstractSearch.cs" />
+    <Compile Include="Search\FreitasSearch.cs" />
+    <Compile Include="Search\ZuckermanSearch.cs" />
     <Compile Include="Search\CaixaSearch.cs" />
     <Compile Include="Search\MegaLeiloesSearch.cs" />
     <Compile Include="Search\MilanLeiloesSearch.cs" />
