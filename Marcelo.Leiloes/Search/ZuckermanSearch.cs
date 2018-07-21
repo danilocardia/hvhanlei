@@ -13,20 +13,29 @@ namespace Marcelo.Leiloes.Search
 {
     public class ZuckermanSearch : AbstractSearch
     {
+        int _limit;
+        string[] _estados;
         private List<string> foundItems = new List<string>();
         private int ultimaPagina = 1;
 
-        public ZuckermanSearch()
+        public ZuckermanSearch(string[] estados, int limit)
         {
+            _estados = estados;
+            _limit = limit;
+
             Config = new Search.SearchDataBag()
             {
-                _url = "http://www.zukerman.com.br/leilao-de-imoveis/sp/todas-as-regioes/todas-as-cidades/todos-os-bairros/residenciais"
+                _url = "http://www.zukerman.com.br/leilao-de-imoveis/{uf}/todas-as-cidades/todos-os-bairros/residenciais"
             };
         }
 
         public override void Process()
         {
-            Thread t = new Thread(() => ProcessRootPage(Config._url));
+            Thread t = new Thread(() =>
+            {
+                foreach(var e in _estados)
+                    ProcessRootPage(Config._url.Replace("{uf}", e));
+            });
             t.SetApartmentState(ApartmentState.STA);
             t.Start();
 
@@ -58,6 +67,9 @@ namespace Marcelo.Leiloes.Search
 
             foreach (var l in links.Elements)
             {
+                if (_limit <= 0)
+                    return;
+
                 var itemUrl = l.ParentNode.Attributes["href"];
 
                 if (foundItems.Contains(itemUrl.ToUpper()))
@@ -73,6 +85,7 @@ namespace Marcelo.Leiloes.Search
                     InvokeItemFinished(item);
 
                     foundItems.Add(item.Url.ToUpper());
+                    _limit--;
                 }
                 catch (Exception ex)
                 {
@@ -80,7 +93,8 @@ namespace Marcelo.Leiloes.Search
                 }
             }
 
-            ProcessRootPage(url.Split('?')[0] + $"?pagina={++ultimaPagina}");
+            if(links.Elements.Count() > 0)
+                ProcessRootPage(url.Split('?')[0] + $"?pagina={++ultimaPagina}");
         }
 
         ItemModel GetItem(string url, string tipo = "")

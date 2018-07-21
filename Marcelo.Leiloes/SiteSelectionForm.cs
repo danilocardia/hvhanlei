@@ -36,8 +36,25 @@ namespace Marcelo.Leiloes
             if (chkLeiloesVIP.Checked)
                 search.searchList.Add(new VipLeiloesSearch());
 
-            if (chkZuckerman.Checked)
-                search.searchList.Add(new ZuckermanSearch());
+
+            if (chkZuckermanSP.Checked)
+                search.searchList.Add(new ZuckermanSearch(new[] { "SP" }, (int)txtZuckermanLimit.Value));
+
+            if (chkZuckermanSul.Checked)
+                search.searchList.Add(new ZuckermanSearch(new[] { "RS", "PR", "SC" }, (int)txtZuckermanLimit.Value));
+
+            if (chkZuckermanRJMGES.Checked)
+                search.searchList.Add(new ZuckermanSearch(new[] { "RJ", "MG", "ES" }, (int)txtZuckermanLimit.Value));
+
+            if (chkZuckermanCentroOeste.Checked)
+                search.searchList.Add(new ZuckermanSearch(new[] { "MT", "GO", "DF", "MS" }, (int)txtZuckermanLimit.Value));
+
+            if (chkZuckermanNorte.Checked)
+                search.searchList.Add(new ZuckermanSearch(new[] { "AC", "RO", "AM", "RR", "PA", "AP", "TO" }, (int)txtZuckermanLimit.Value));
+
+            if (chkZuckermanNordeste.Checked)
+                search.searchList.Add(new ZuckermanSearch(new[] { "MA", "PI", "CE", "RN", "PB", "PE", "AL", "SE", "BA" }, (int)txtZuckermanLimit.Value));
+
 
             if (chkMilan.Checked)
                 search.searchList.Add(new MilanLeiloesSearch());
