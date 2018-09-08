@@ -44,6 +44,7 @@
             this.chkCaixaSP = new System.Windows.Forms.CheckBox();
             this.chkZuckerman = new System.Windows.Forms.CheckBox();
             this.chkFreitas = new System.Windows.Forms.CheckBox();
+            this.chkSodre = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,7 +89,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(186, 300);
+            this.button1.Location = new System.Drawing.Point(186, 326);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 23);
             this.button1.TabIndex = 4;
@@ -106,7 +107,7 @@
             this.groupBox1.Controls.Add(this.chkCaixaSul);
             this.groupBox1.Controls.Add(this.chkCaixaRJMGES);
             this.groupBox1.Controls.Add(this.chkCaixaSP);
-            this.groupBox1.Location = new System.Drawing.Point(13, 151);
+            this.groupBox1.Location = new System.Drawing.Point(13, 177);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(282, 143);
             this.groupBox1.TabIndex = 5;
@@ -210,11 +211,22 @@
             this.chkFreitas.Text = "Freitas Leilões";
             this.chkFreitas.UseVisualStyleBackColor = true;
             // 
+            // chkSodre
+            // 
+            this.chkSodre.AutoSize = true;
+            this.chkSodre.Location = new System.Drawing.Point(12, 149);
+            this.chkSodre.Name = "chkSodre";
+            this.chkSodre.Size = new System.Drawing.Size(94, 17);
+            this.chkSodre.TabIndex = 8;
+            this.chkSodre.Text = "Sodre Santoro";
+            this.chkSodre.UseVisualStyleBackColor = true;
+            // 
             // SiteSelectionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 331);
+            this.ClientSize = new System.Drawing.Size(300, 361);
+            this.Controls.Add(this.chkSodre);
             this.Controls.Add(this.chkFreitas);
             this.Controls.Add(this.chkZuckerman);
             this.Controls.Add(this.groupBox1);
@@ -254,5 +266,6 @@
         private System.Windows.Forms.DateTimePicker dtPicker;
         private System.Windows.Forms.CheckBox chkZuckerman;
         private System.Windows.Forms.CheckBox chkFreitas;
+        private System.Windows.Forms.CheckBox chkSodre;
     }
 }
