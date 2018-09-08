@@ -41,12 +41,15 @@ namespace Marcelo.Leiloes.Repository.Models
                 Site = data[0],
                 Url = data[1],
                 DtInicio = data[2],
+                Cod = data[3],
                 Entidade = data[4],
                 Valor = data[5],
                 UF = data[6],
                 Cidade = data[7],
-                Endereco = data[8],
-                CEP = data[9]
+                Bairro = data[8],
+                Endereco = data[9],
+                CEP = data[12],
+                InformacoesAdicionais = data[13]
             };
         }
 
