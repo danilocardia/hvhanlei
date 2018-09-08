@@ -42,6 +42,7 @@
             this.chkCaixaSul = new System.Windows.Forms.CheckBox();
             this.chkCaixaRJMGES = new System.Windows.Forms.CheckBox();
             this.chkCaixaSP = new System.Windows.Forms.CheckBox();
+            this.chkZuckerman = new System.Windows.Forms.CheckBox();
             this.chkFreitas = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.chkZuckermanNorte = new System.Windows.Forms.CheckBox();
@@ -51,6 +52,8 @@
             this.chkZuckermanRJMGES = new System.Windows.Forms.CheckBox();
             this.chkZuckermanSP = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.chkSodre = new System.Windows.Forms.CheckBox();
+
             this.txtZuckermanLimit = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -220,6 +223,14 @@
             this.groupBox2.Controls.Add(this.chkZuckermanSul);
             this.groupBox2.Controls.Add(this.chkZuckermanRJMGES);
             this.groupBox2.Controls.Add(this.chkZuckermanSP);
+            this.chkSodre.AutoSize = true;
+            this.chkSodre.Location = new System.Drawing.Point(12, 149);
+            this.chkSodre.Name = "chkSodre";
+            this.chkSodre.Size = new System.Drawing.Size(94, 17);
+            this.chkSodre.TabIndex = 8;
+            this.chkSodre.Text = "Sodre Santoro";
+            this.chkSodre.UseVisualStyleBackColor = true;
+            // 
             this.groupBox2.Location = new System.Drawing.Point(13, 92);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(282, 143);
@@ -329,6 +340,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(300, 424);
             this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(300, 361);
+            this.Controls.Add(this.chkSodre);
             this.Controls.Add(this.chkFreitas);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
@@ -370,6 +383,7 @@
         private System.Windows.Forms.DateTimePicker dtPicker;
         private System.Windows.Forms.CheckBox chkFreitas;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox chkSodre;
         private System.Windows.Forms.NumericUpDown txtZuckermanLimit;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chkZuckermanNorte;

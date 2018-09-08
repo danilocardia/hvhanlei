@@ -62,6 +62,9 @@ namespace Marcelo.Leiloes
             if (chkFreitas.Checked)
                 search.searchList.Add(new FreitasSearch());
 
+            if (chkSodre.Checked)
+                search.searchList.Add(new SodreSantoroSearch());
+
             if (chkCaixaSP.Checked)
                 search.searchList.Add(new CaixaSearch(new[] { "SP" }, dtPicker.Value));
 
