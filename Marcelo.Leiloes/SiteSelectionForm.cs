@@ -87,5 +87,10 @@ namespace Marcelo.Leiloes
 
             search.ShowDialog();
         }
+
+        private void chkSodre_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -42,19 +42,17 @@
             this.chkCaixaSul = new System.Windows.Forms.CheckBox();
             this.chkCaixaRJMGES = new System.Windows.Forms.CheckBox();
             this.chkCaixaSP = new System.Windows.Forms.CheckBox();
-            this.chkZuckerman = new System.Windows.Forms.CheckBox();
             this.chkFreitas = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtZuckermanLimit = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             this.chkZuckermanNorte = new System.Windows.Forms.CheckBox();
             this.chkZuckermanCentroOeste = new System.Windows.Forms.CheckBox();
             this.chkZuckermanNordeste = new System.Windows.Forms.CheckBox();
             this.chkZuckermanSul = new System.Windows.Forms.CheckBox();
             this.chkZuckermanRJMGES = new System.Windows.Forms.CheckBox();
             this.chkZuckermanSP = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.chkSodre = new System.Windows.Forms.CheckBox();
-
-            this.txtZuckermanLimit = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtZuckermanLimit)).BeginInit();
@@ -101,7 +99,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(186, 390);
+            this.button1.Location = new System.Drawing.Point(186, 401);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 23);
             this.button1.TabIndex = 4;
@@ -119,7 +117,7 @@
             this.groupBox1.Controls.Add(this.chkCaixaSul);
             this.groupBox1.Controls.Add(this.chkCaixaRJMGES);
             this.groupBox1.Controls.Add(this.chkCaixaSP);
-            this.groupBox1.Location = new System.Drawing.Point(13, 241);
+            this.groupBox1.Location = new System.Drawing.Point(13, 252);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(282, 143);
             this.groupBox1.TabIndex = 5;
@@ -223,20 +221,48 @@
             this.groupBox2.Controls.Add(this.chkZuckermanSul);
             this.groupBox2.Controls.Add(this.chkZuckermanRJMGES);
             this.groupBox2.Controls.Add(this.chkZuckermanSP);
-            this.chkSodre.AutoSize = true;
-            this.chkSodre.Location = new System.Drawing.Point(12, 149);
-            this.chkSodre.Name = "chkSodre";
-            this.chkSodre.Size = new System.Drawing.Size(94, 17);
-            this.chkSodre.TabIndex = 8;
-            this.chkSodre.Text = "Sodre Santoro";
-            this.chkSodre.UseVisualStyleBackColor = true;
-            // 
-            this.groupBox2.Location = new System.Drawing.Point(13, 92);
+            this.groupBox2.Location = new System.Drawing.Point(13, 103);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(282, 143);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Zuckerman Leilões";
+            // 
+            // txtZuckermanLimit
+            // 
+            this.txtZuckermanLimit.Increment = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.txtZuckermanLimit.Location = new System.Drawing.Point(146, 111);
+            this.txtZuckermanLimit.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.txtZuckermanLimit.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.txtZuckermanLimit.Name = "txtZuckermanLimit";
+            this.txtZuckermanLimit.Size = new System.Drawing.Size(92, 20);
+            this.txtZuckermanLimit.TabIndex = 14;
+            this.txtZuckermanLimit.Value = new decimal(new int[] {
+            350,
+            0,
+            0,
+            0});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(54, 113);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Limitar busca em";
             // 
             // chkZuckermanNorte
             // 
@@ -298,49 +324,23 @@
             this.chkZuckermanSP.Text = "SP";
             this.chkZuckermanSP.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // chkSodre
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(54, 113);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 13);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Limitar busca em";
-            // 
-            // txtZuckermanLimit
-            // 
-            this.txtZuckermanLimit.Increment = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.txtZuckermanLimit.Location = new System.Drawing.Point(146, 111);
-            this.txtZuckermanLimit.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.txtZuckermanLimit.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.txtZuckermanLimit.Name = "txtZuckermanLimit";
-            this.txtZuckermanLimit.Size = new System.Drawing.Size(92, 20);
-            this.txtZuckermanLimit.TabIndex = 14;
-            this.txtZuckermanLimit.Value = new decimal(new int[] {
-            350,
-            0,
-            0,
-            0});
+            this.chkSodre.AutoSize = true;
+            this.chkSodre.Location = new System.Drawing.Point(12, 80);
+            this.chkSodre.Name = "chkSodre";
+            this.chkSodre.Size = new System.Drawing.Size(94, 17);
+            this.chkSodre.TabIndex = 8;
+            this.chkSodre.Text = "Sodre Santoro";
+            this.chkSodre.UseVisualStyleBackColor = true;
+            this.chkSodre.CheckedChanged += new System.EventHandler(this.chkSodre_CheckedChanged);
             // 
             // SiteSelectionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 424);
+            this.ClientSize = new System.Drawing.Size(300, 432);
             this.Controls.Add(this.groupBox2);
-            this.ClientSize = new System.Drawing.Size(300, 361);
             this.Controls.Add(this.chkSodre);
             this.Controls.Add(this.chkFreitas);
             this.Controls.Add(this.groupBox1);
