@@ -58,6 +58,7 @@ namespace Marcelo.Leiloes.Repository.Models
             UF = Util.Clear(UF);
             DtInicio = Util.Clear(DtInicio);
             Endereco = Util.Clear(Endereco);
+            Bairro = Util.Clear(Bairro);
             Url = Util.Clear(Url);
             Tipo = Util.Clear(Tipo);
             CEP = Util.Clear(CEP);
