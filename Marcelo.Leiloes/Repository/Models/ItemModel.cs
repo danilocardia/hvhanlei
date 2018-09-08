@@ -62,7 +62,6 @@ namespace Marcelo.Leiloes.Repository.Models
             DtInicio = Util.Clear(DtInicio);
             Endereco = Util.Clear(Endereco);
             Bairro = Util.Clear(Bairro);
-            Url = Util.Clear(Url);
             Tipo = Util.Clear(Tipo);
             CEP = Util.Clear(CEP);
             Entidade = Util.Clear(Entidade);
