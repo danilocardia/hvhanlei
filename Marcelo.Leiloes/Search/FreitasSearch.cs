@@ -12,6 +12,7 @@ namespace Marcelo.Leiloes.Search
 {
     public class FreitasSearch : AbstractSearch
     {
+        //teste conectividade
         private List<string> foundItems = new List<string>();
         private int ultimaPagina = 1;
 
