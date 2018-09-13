@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Marcelo.Leiloes.Search
 {
@@ -27,7 +26,7 @@ namespace Marcelo.Leiloes.Search
             int paginas;
 
             wc.Encoding = Encoding.UTF8;
-            CsQuery.CQ root = WebUtility.HtmlDecode(wc.DownloadString(Config._url));
+            CQ root = WebUtility.HtmlDecode(wc.DownloadString(Config._url));
             var totalLotes = root.Find(".cabecalho-resultadoBusca b");
         
             if (!Int32.TryParse(totalLotes.ElementAt(0).InnerText, out qtdLotes))
@@ -45,7 +44,7 @@ namespace Marcelo.Leiloes.Search
         {
             wc.Encoding = Encoding.UTF8;
 
-            CsQuery.CQ root = WebUtility.HtmlDecode(wc.DownloadString(url));
+            CQ root = WebUtility.HtmlDecode(wc.DownloadString(url));
 
             var links = root.Find(".tipo-vizualizacao li");
 
@@ -84,7 +83,7 @@ namespace Marcelo.Leiloes.Search
 
             wc.Encoding = Encoding.Default;
 
-            CsQuery.CQ root = wc.DownloadString(url);
+            CQ root = wc.DownloadString(url);
 
             var Codigo = root.Find(".online_lance-tit-esq h1").ElementAt(0).InnerText;
             if(Codigo.Length >= 23)

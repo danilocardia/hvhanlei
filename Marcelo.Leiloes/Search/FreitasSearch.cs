@@ -1,4 +1,4 @@
-﻿using Marcelo.Leiloes.Repository;
+﻿using CsQuery;
 using Marcelo.Leiloes.Repository.Models;
 using System;
 using System.Collections.Generic;
@@ -6,38 +6,72 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Marcelo.Leiloes.Search
 {
     public class FreitasSearch : AbstractSearch
     {
-        //teste conectividade
-        //teste pull agora
         private List<string> foundItems = new List<string>();
-        private int ultimaPagina = 1;
 
         public FreitasSearch()
         {
             Config = new Search.SearchDataBag()
             {
-                _url = ""
+                _url = "https://www.freitasleiloeiro.com.br/leiloes/pesquisar?pg=1&categoria=2"
             };
         }
 
         public override void Process()
         {
-            ProcessRootPage(Config._url);
+            int qtdPaginas;
+
+            wc.Encoding = Encoding.UTF8;
+            CQ root = WebUtility.HtmlDecode(wc.DownloadString(Config._url));
+            var pagination = root.Find(".pagination-container ul li a");
+
+            if (!Int32.TryParse(pagination.ElementAt(pagination.Length - 2).InnerText, out qtdPaginas))
+                return;
+
+            for (int i = 1; i <= qtdPaginas; i++)
+            {
+                ProcessRootPage($"https://www.freitasleiloeiro.com.br/leiloes/pesquisar?pg={i}&categoria=2");
+            }
         }
 
         void ProcessRootPage(string url)
         {
-            int idx = 1;
+            wc.Encoding = Encoding.UTF8;
 
-            while (true)
+            CQ root = WebUtility.HtmlDecode(wc.DownloadString(url));
+
+            var links = root.Find("#table_agenda_body .cursor-pointer");
+
+            foreach (var l in links.Elements)
             {
-                InvokeItemFinished(new Repository.Models.ItemModel() { Cod = (idx++).ToString() });
-                Thread.Sleep(new Random().Next(800, 9000));
+                string destUrl = l.GetAttribute("onclick").Replace("self.location=", "").Replace("'", "");
+
+                destUrl = Config._url.Replace("/leiloes/pesquisar?pg=1&categoria=2", "") + destUrl;
+
+                if (foundItems.Contains(destUrl))
+                {
+                    continue;
+                }
+
+                try
+                {
+                    var item = GetItem(destUrl);
+
+                    if (item != null)
+                    {
+                        InvokeItemFinished(item);
+
+                        foundItems.Add(item.Url);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
             }
         }
 
@@ -47,28 +81,24 @@ namespace Marcelo.Leiloes.Search
 
             wc.Encoding = Encoding.UTF8;
 
-            CsQuery.CQ root = wc.DownloadString(url);
+            CQ root = wc.DownloadString(url);
 
-            var desc = root.Find(".description li");
+            info.Cod = url.Substring(url.IndexOf("=") + 1, url.IndexOf("&") - url.IndexOf("=") - 1) + " - " +
+                       url.Substring(url.LastIndexOf("=") + 1);
 
-            info.Cod = desc.ElementAt(1)?.InnerText.Trim();
-            info.Valor = desc.ElementAt(2)?.InnerText.Trim();
+            info.InformacoesAdicionais = root.Find("#txtDescNota").FirstElement().InnerText.Trim();
 
-            string cidadeEstado = desc.ElementAt(5).LastElementChild.InnerText;
-            info.Cidade = cidadeEstado.Split(',')[0];
-            info.UF = cidadeEstado.Split(',')[1];
+            info.Valor = root.Find(".table-striped td").FirstElement().InnerText.Replace("R$", "").Replace(".", "").Trim();
 
-            info.DtInicio = desc.ElementAt(7).LastElementChild.InnerText;
+            info.DtInicio = root.Find("#lblTipoStatusLote span").ElementAt(0).InnerText;
 
-            info.Endereco = root.Find("[width=\"20%\"]").Next("td").ElementAt(0).InnerText;
+            info.Entidade = GetSponsorFrom(root.Find(".jumbotron h3").FirstElement().InnerText);
 
-            info.InformacoesAdicionais = root.Find("#batch-description").ElementAt(0).InnerText;
+            info.Tipo = GetTipoFrom(info.InformacoesAdicionais);
 
-            info.Entidade = root.Find(".table-nomargin tr td").ElementAt(1).InnerText;
-
-            info.Tipo = tipo;
+            info.Falha = false;
             info.Url = url;
-            info.Site = "MEGALEILOES";
+            info.Site = "FREITAS";
 
             return info;
         }
